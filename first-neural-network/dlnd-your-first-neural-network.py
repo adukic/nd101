@@ -218,7 +218,7 @@ import sys
 
 ### Set the hyperparameters here ###
 epochs = 3000
-learning_rate = 0.15
+learning_rate = 0.01
 hidden_nodes = 25
 output_nodes = 1
 
@@ -228,16 +228,16 @@ network = NeuralNetwork(N_i, hidden_nodes, output_nodes, learning_rate)
 losses = {'train':[], 'validation':[]}
 for e in range(epochs):
     if (e == epochs /4):
-        network.lr = 0.1
-        print()
-    if (e == epochs /2):
-        network.lr = 0.01
-        print()
-    if (e == 3 * epochs /4):
         network.lr = 0.005
         print()
-    if (e == 9 * epochs /10):
+    if (e == epochs /2):
         network.lr = 0.001
+        print()
+    if (e == 3 * epochs /4):
+        network.lr = 0.0005
+        print()
+    if (e == 9 * epochs /10):
+        network.lr = 0.00001
         print()
     # Go through a random batch of 128 records from the training data set
     batch = np.random.choice(train_features.index, size=128)
