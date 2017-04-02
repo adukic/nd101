@@ -365,6 +365,21 @@ def get_batches(int_text, batch_size, seq_length):
     :param seq_length: The length of sequence
     :return: Batches as a Numpy array
     """
+    n_batches = int(len(int_text) / (batch_size * seq_length))
+    xdata = np.array(int_text[: n_batches * batch_size * seq_length])
+    ydata = np.array(int_text[1: n_batches * batch_size * seq_length + 1])
+    x_batches = np.split(xdata.reshape(batch_size, -1), n_batches, 1)
+    y_batches = np.split(ydata.reshape(batch_size, -1), n_batches, 1)
+    return np.asarray(list(zip(x_batches, y_batches)))
+
+def get_batches2(int_text, batch_size, seq_length):
+    """
+    Return batches of input and target
+    :param int_text: Text with the words replaced by their ids
+    :param batch_size: The size of batch
+    :param seq_length: The length of sequence
+    :return: Batches as a Numpy array
+    """
     n_batches = len(int_text) // (batch_size * seq_length)
     int_text = int_text[:n_batches * (batch_size * seq_length)]
     
