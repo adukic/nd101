@@ -2,4 +2,6 @@
 .ipynb_checkpoints/
 .DS_Store
 checkpoints/
+flower_photos/
+*.gz
 
