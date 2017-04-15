@@ -1,0 +1,8 @@
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+checkpoints/
+checkpoints
+*.p
+save.*
+
